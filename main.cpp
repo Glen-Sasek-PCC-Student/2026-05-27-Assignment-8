@@ -257,14 +257,31 @@ void getInput(double &midtermExamScore, double &finalExamScore);
 //    assignments are 60%, 
 //    midterm exam    20%
 //    final exam      20%
-double calcDecimalGrade(double assignAvg, double midtermExamScore, double finalExamScore);
+double calcDecimalGrade(double assignAvg, double midtermExamScore, double finalExamScore) {
+  return 
+    assignAvg * ASSIGNMENTS_WEIGHT + 
+    midtermExamScore * EXAM_WEIGHT + 
+    finalExamScore * EXAM_WEIGHT;
+}
 
 // A >= 3.3 <= 4.0 Exceeds
 // B >= 2.8 <  3.3 Meets
 // C >= 2.0 <  2.8 Approaching
 // D >= 1.2 <  2.0 Not Yet
 // F    0.0 <  1.2 No Evidence
-void calcLetterGrade(double decimalGrade, char &letter); 
+void calcLetterGrade(double decimalGrade, char &letter) {
+  if(3.3 <= decimalGrade) {
+    letter = 'A';
+  } else if(2.8 <= decimalGrade) {
+    letter = 'B';
+  } else if(2.0 <= decimalGrade) {
+    letter = 'C';
+  } else if(1.2 <= decimalGrade) {
+    letter = 'D';
+  } else {
+    letter = 'F';
+  }
+}
 
 
 // ------------- DESIGN -------------
